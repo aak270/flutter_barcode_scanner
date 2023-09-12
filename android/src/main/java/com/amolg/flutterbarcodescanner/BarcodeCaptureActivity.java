@@ -117,9 +117,8 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
             Log.e("BCActivity:onCreate()", "onCreate: " + e.getLocalizedMessage());
         }
 
-        Button btnBarcodeCaptureCancel = findViewById(R.id.btnBarcodeCaptureCancel);
-        btnBarcodeCaptureCancel.setText(buttonText);
-        btnBarcodeCaptureCancel.setOnClickListener(this);
+        ImageView imgViewBarcodeCaptureCancel = findViewById(R.id.imgViewBarcodeCaptureCancel);
+        imgViewBarcodeCaptureCancel.setOnClickListener(this);
 
         imgViewBarcodeCaptureUseFlash = findViewById(R.id.imgViewBarcodeCaptureUseFlash);
         imgViewBarcodeCaptureUseFlash.setOnClickListener(this);
@@ -400,18 +399,18 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
             try {
                 if (flashStatus == USE_FLASH.OFF.ordinal()) {
                     flashStatus = USE_FLASH.ON.ordinal();
-                    imgViewBarcodeCaptureUseFlash.setImageResource(R.drawable.ic_barcode_flash_on);
+                    imgViewBarcodeCaptureUseFlash.setImageResource(R.drawable.ic_fluent_flash_24_filled);
                     turnOnOffFlashLight(true);
                 } else {
                     flashStatus = USE_FLASH.OFF.ordinal();
-                    imgViewBarcodeCaptureUseFlash.setImageResource(R.drawable.ic_barcode_flash_off);
+                    imgViewBarcodeCaptureUseFlash.setImageResource(R.drawable.ic_fluent_flash_off_24_filled);
                     turnOnOffFlashLight(false);
                 }
             } catch (Exception e) {
                 Toast.makeText(this, "Unable to turn on flash", Toast.LENGTH_SHORT).show();
                 Log.e("BarcodeCaptureActivity", "FlashOnFailure: " + e.getLocalizedMessage());
             }
-        } else if (i == R.id.btnBarcodeCaptureCancel) {
+        } else if (i == R.id.imgViewBarcodeCaptureCancel) {
             Barcode barcode = new Barcode();
             barcode.rawValue = "-1";
             barcode.displayValue = "-1";
